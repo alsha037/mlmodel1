@@ -5,21 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>interface</title>
 
-    <script>
+   
+
+</head>
+<body>
+   <input type="text" id="textInput" >
+   <button id="submitButton">Submit</button>
+   <p id="textId"></p>
+   <script>
     const URL = "https://api-inference.huggingface.co/models/gpt2"
+    const textInput = document.getElementById("textInput")
+   
+    const submitButton = document.getElementById("submitButton")
+    submitButton.addEventListener("click", ()=>{console.log(textInput.value)})
+    const textId = document.getElementById("textId")
+
 
     async function makeAPICall(){
-        const result = await fetch(URL,{method: "POST", body: JSON.stringify({"inputs": "Can you please let us know more details about your "})
+        const result = await fetch(URL,{method: "POST", body: JSON.stringify({"inputs": "Can you please let us know more details about your "})
+      
     })
         result.json().then(data=>{
             console.log(data)
+            console.log(textInput) 
+            console.log(submitButton)
+            console.log(textId)
         })
+
+    
     }
     makeAPICall()
-    </script>
-</head>
-<body>
-   <input type="text" class="form-control">
-   <button class="btn btn-success">Submit</button>
+</script>
 </body>
 </html>
